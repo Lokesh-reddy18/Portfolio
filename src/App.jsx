@@ -36,8 +36,8 @@ const App = () => {
       description: "Developed a full-stack chess platform with real-time multiplayer, puzzles and AI integration. Engineered real-time game functionality using Socket.IO with move validation and game state management.",
       technologies: ["React.js", "Node.js", "Socket.IO", "MongoDB", "Redux", "Tailwind CSS", "JWT", "Chess.js"],
       image: "/projects/chess.png",
-      demoUrl: "https://chess-frontend-iota-two.vercel.app",
-      githubUrl: "https://github.com/Lokesh-reddy18/Chess-frontend"
+      demoUrl: "https://chess-master-two.vercel.app/",
+      githubUrl: "https://github.com/Lokesh-reddy18/Chess-Master/"
     },
     {
       title: "JobQuest - MERN Stack Job Portal",
