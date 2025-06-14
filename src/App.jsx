@@ -82,7 +82,7 @@ const App = () => {
           <div className="flex justify-between items-center">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-blue-600">Kolli Lokesh Reddy</h1>
+              <h1 className="text-2xl font-bold text-blue-600">KLR</h1>
             </div>
             
             {/* Desktop Navigation and Theme Toggle - Grouped together */}
@@ -175,28 +175,28 @@ const App = () => {
       {/* Hero Section */}
       <section
         id="home"
-        className={`min-h-screen flex items-center ${darkMode ? 'bg-gradient-to-r from-blue-900 to-indigo-900' : 'bg-gradient-to-r from-blue-50 to-indigo-50'}`}
+        className={`min-h-screen flex items-center ${darkMode ? 'bg-gradient-to-r from-blue-900 to-indigo-900' : 'bg-gradient-to-r from-blue-50 to-indigo-50'} pt-20`}
       >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2 mb-10 md:mb-0">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 leading-tight text-center md:text-left">
+            <div className="w-full md:w-1/2 mb-8 md:mb-0 order-2 md:order-1">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight text-center md:text-left">
                 Hi, I'm Kolli Lokesh Reddy
               </h2>
-              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-10 text-center md:text-left`}>
+              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-8 text-center md:text-left text-sm sm:text-base`}>
                 A passionate developer with expertise in full-stack development and competitive programming.
                 Currently seeking placement opportunities to contribute to innovative software projects.
               </p>
-              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
                 <a
                   href="#projects"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 duration-200"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 duration-200 text-center"
                 >
                   View Projects
                 </a>
                 <button
                   onClick={handleResumeDownload}
-                  className={`${darkMode ? 'bg-gray-800 border border-blue-500 text-blue-400 hover:bg-gray-700' : 'bg-white border border-blue-600 text-blue-600 hover:bg-blue-50'} px-6 py-3 rounded-md transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 duration-200 flex items-center space-x-2`}
+                  className={`${darkMode ? 'bg-gray-800 border border-blue-500 text-blue-400 hover:bg-gray-700' : 'bg-white border border-blue-600 text-blue-600 hover:bg-blue-50'} px-6 py-3 rounded-md transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 duration-200 flex items-center justify-center space-x-2`}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -205,18 +205,18 @@ const App = () => {
                 </button>
                 <a
                   href="#contact"
-                  className={`${darkMode ? 'bg-gray-800 border border-gray-600 text-gray-300 hover:bg-gray-700' : 'bg-gray-100 border border-gray-300 text-gray-700 hover:bg-gray-200'} px-6 py-3 rounded-md transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 duration-200`}
+                  className={`${darkMode ? 'bg-gray-800 border border-gray-600 text-gray-300 hover:bg-gray-700' : 'bg-gray-100 border border-gray-300 text-gray-700 hover:bg-gray-200'} px-6 py-3 rounded-md transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 duration-200 text-center`}
                 >
                   Contact Me
                 </a>
               </div>
             </div>
-            <div className="md:w-1/2 flex justify-center">
+            <div className="w-full md:w-1/2 flex justify-center order-1 md:order-2">
               <div className="relative">
                 <img
                   src="/projects/myimage.png"
                   alt="Profile"
-                  className="rounded-lg shadow-lg w-64 h-64 object-cover"
+                  className="rounded-lg shadow-lg w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover"
                 />
               </div>
             </div>
@@ -562,7 +562,7 @@ const App = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              <h3 className="text-xl font-bold text-blue-500">Kolli Lokesh Reddy</h3>
+              <h3 className="text-xl font-bold text-blue-500">KLR</h3>
             </div>
             
             <div className="flex space-x-4">
