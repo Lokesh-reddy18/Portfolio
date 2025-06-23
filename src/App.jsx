@@ -36,8 +36,8 @@ const App = () => {
       description: "Developed a full-stack chess platform with real-time multiplayer, puzzles and AI integration. Engineered real-time game functionality using Socket.IO with move validation and game state management.",
       technologies: ["React.js", "Node.js", "Socket.IO", "MongoDB", "Redux", "Tailwind CSS", "JWT", "Chess.js"],
       image: "/projects/chess.png",
-      demoUrl: "https://chess-master-two.vercel.app/",
-      githubUrl: "https://github.com/Lokesh-reddy18/Chess-Master/"
+      demoUrl: "https://chess-frontend-iota-two.vercel.app",
+      githubUrl: "https://github.com/Lokesh-reddy18/Chess-frontend"
     },
     {
       title: "JobQuest - MERN Stack Job Portal",
@@ -589,9 +589,25 @@ const App = () => {
             </div>
           </div>
           <div className="mt-10 pt-6 border-t border-gray-700 text-center">
-            <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
-              &copy; {new Date().getFullYear()} Kolli Lokesh Reddy. All rights reserved.
+            <p className={darkMode ? 'text-gray-400 inline-block' : 'text-gray-600 inline-block'}>
+              &copy; {new Date().getFullYear()} Kolli Lokesh Reddy.
             </p>
+            <span className="inline-block align-middle ml-2 mb-1">
+              <img
+                src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Purple%20Heart.png"
+                alt="Purple Heart"
+                width="25"
+                height="25"
+                style={{ display: 'inline', margin: 0, padding: 0 }}
+              />
+              <img
+                src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Ghost.png"
+                alt="Ghost"
+                width="25"
+                height="25"
+                style={{ display: 'inline', margin: 0, padding: 0 }}
+              />
+            </span>
           </div>
         </div>
       </footer>
