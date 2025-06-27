@@ -146,7 +146,7 @@ const App = () => {
   return (
     <div className={darkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-800'}>
       {/* Header/Navigation */}
-      <header className={`fixed w-full z-50 transition-all duration-300 ${darkMode ? 'bg-gray-800 shadow-gray-700' : 'bg-white shadow-md'}`}>
+      <header className={`fixed w-full z-50 transition-all duration-300 ${darkMode ? 'bg-gray-900 shadow-gray-700' : 'bg-white shadow-md'}`}>
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             {/* Logo */}
@@ -156,14 +156,15 @@ const App = () => {
             
             {/* Desktop Navigation and Theme Toggle - Grouped together */}
             <div className="hidden md:flex items-center space-x-6">
-              <nav className="flex space-x-8">
+              <nav className="flex space-x-10">
                 {['home', 'about', 'projects', 'skills', 'contact'].map((section) => (
                   <a 
                     key={section}
                     href={`#${section}`}  
                     onClick={() => handleScroll(section)
                     }
-                    className={`${darkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-colors ${activeSection === section ? 'text-blue-600 font-medium' : ''}`}
+                    className={`${darkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-colors font-semibold tracking-wide px-2 py-1 ${activeSection === section ? 'text-blue-600 font-bold' : ''}`}
+                    style={{ letterSpacing: '0.02em', fontWeight: 600 }}
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
                   </a>
@@ -225,15 +226,35 @@ const App = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className={`md:hidden ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg animate-fadeIn`}>
-            <nav className="flex flex-col px-4 py-2 space-y-4">
+            <nav className="flex flex-col px-4 py-2 space-y-2">
               {['home', 'about', 'projects', 'skills', 'contact'].map((section) => (
                 <a 
                   key={section}
                   href={`#${section}`} 
                   onClick={() => handleScroll(section)}
-                  className={`${darkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-colors ${activeSection === section ? 'text-blue-600 font-medium' : ''} py-2`}
+                  className={`relative px-4 py-3 rounded-full font-medium transition-all duration-200 text-base
+                    ${darkMode
+                      ? 'text-gray-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-700 hover:to-purple-700'
+                      : 'text-gray-700 hover:text-blue-700 hover:bg-gradient-to-r hover:from-blue-100 hover:to-purple-100'}
+                    ${activeSection === section
+                      ? (darkMode
+                          ? 'text-white bg-gradient-to-r from-blue-700 to-purple-700 shadow-md'
+                          : 'text-blue-700 bg-gradient-to-r from-blue-100 to-purple-100 shadow')
+                      : ''}
+                    group
+                  `}
+                  style={{ minWidth: '90px', textAlign: 'center' }}
                 >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                  <span className="relative z-10">
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </span>
+                  <span
+                    className={`absolute left-4 right-4 bottom-1 h-1 rounded-full transition-all duration-300
+                      ${activeSection === section
+                        ? (darkMode ? 'bg-gradient-to-r from-blue-400 to-purple-400 opacity-80' : 'bg-gradient-to-r from-blue-400 to-purple-400 opacity-80')
+                        : 'opacity-0 group-hover:opacity-60 bg-gradient-to-r from-blue-300 to-purple-300'}
+                    `}
+                  />
                 </a>
               ))}
             </nav>
@@ -244,37 +265,33 @@ const App = () => {
       {/* Hero Section */}
       <section
         id="home"
-        className={`min-h-screen flex items-center ${darkMode ? 'bg-gradient-to-r from-blue-900 to-indigo-900' : 'bg-gradient-to-r from-blue-50 to-indigo-50'} pt-20`}
+        className={`min-h-screen flex items-center justify-center pt-24 transition-colors duration-300 ${darkMode ? '' : 'bg-white text-gray-800'}`}
+        style={darkMode ? { backgroundColor: '#302f82', color: '#f3f4f6' } : {}}
       >
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
-            <div className="w-full md:w-1/2 mb-8 md:mb-0 order-2 md:order-1">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight text-center md:text-left">
-                Hi, I'm Kolli Lokesh Reddy
-              </h2>
-              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-8 text-center md:text-left text-sm sm:text-base`}>
-                A passionate developer with expertise in full-stack development and competitive programming.
-                Currently seeking placement opportunities to contribute to innovative software projects.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
+            <div className="w-full md:w-1/2 order-2 md:order-1 text-center md:text-left">
+              <h2 className={`text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight ${darkMode ? 'text-blue-200' : 'text-blue-800'}`}>Hi, I'm Kolli Lokesh Reddy</h2>
+              <p className={`mb-10 text-lg sm:text-xl font-medium ${darkMode ? 'text-blue-100/90' : 'text-gray-700'}`}>A passionate developer with expertise in full-stack development and competitive programming. Currently seeking placement opportunities to contribute to innovative software projects.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <a
                   href="#projects"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 duration-200 text-center"
+                  className={`${darkMode ? 'bg-blue-700 hover:bg-blue-800 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'} px-8 py-4 rounded-lg shadow font-semibold text-lg transition-all duration-200`}
                 >
                   View Projects
                 </a>
                 <button
                   onClick={handleResumeDownload}
-                  className={`${darkMode ? 'bg-gray-800 border border-blue-500 text-blue-400 hover:bg-gray-700' : 'bg-white border border-blue-600 text-blue-600 hover:bg-blue-50'} px-6 py-3 rounded-md transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 duration-200 flex items-center justify-center space-x-2`}
+                  className={`${darkMode ? 'bg-gray-800 border border-blue-400 text-blue-200 hover:bg-gray-700' : 'bg-white border border-blue-600 text-blue-700 hover:bg-blue-50'} px-8 py-4 rounded-lg shadow font-semibold text-lg transition-all duration-200 flex items-center justify-center gap-2`}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   <span>Download Resume</span>
                 </button>
                 <a
                   href="#contact"
-                  className={`${darkMode ? 'bg-gray-800 border border-gray-600 text-gray-300 hover:bg-gray-700' : 'bg-gray-100 border border-gray-300 text-gray-700 hover:bg-gray-200'} px-6 py-3 rounded-md transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-1 duration-200 text-center`}
+                  className={`${darkMode ? 'bg-blue-900 border border-blue-400 text-blue-100 hover:bg-blue-800' : 'bg-blue-100 border border-blue-300 text-blue-900 hover:bg-blue-200'} px-8 py-4 rounded-lg shadow font-semibold text-lg transition-all duration-200 text-center`}
                 >
                   Contact Me
                 </a>
@@ -285,15 +302,14 @@ const App = () => {
                 <img
                   src="/projects/myimage.png"
                   alt="Profile"
-                  className="rounded-lg shadow-lg w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover"
+                  className="rounded-lg shadow-lg w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover border-4 border-white"
                 />
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* About Section */}
+      </section>    
+        {/* About Section */}
       <section id="about" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
@@ -379,11 +395,10 @@ const App = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className={`py-20 ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
+      <section id="skills" className={`py-20 transition-colors duration-300 ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-800'}`}>
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-16">Skills</h2>
-
-          <div className={`${darkMode ? 'bg-gray-700' : 'bg-white'} p-8 rounded-lg shadow-md`}>
+          <h2 className={`text-3xl font-bold text-center mb-16 ${darkMode ? 'text-blue-200' : 'text-blue-800'}`}>Skills</h2>
+          <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} p-8 rounded-lg shadow-md`}>
             <div className="flex flex-wrap justify-center gap-4">
               {[
                 // Languages
@@ -398,6 +413,7 @@ const App = () => {
                 { name: "React.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg"  },
                 { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg"  },
                 { name: "Express.js", icon: "/icons/express.svg" }, // Fallback
+                { name: "jQuery", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original-wordmark.svg" },
                 { name: "TailwindCSS", icon: "/icons/tailwind.svg" },
                 { name: "Bootstrap", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain-wordmark.svg" },
                 { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" },
@@ -407,13 +423,12 @@ const App = () => {
               ].map((skill, idx) => (
                 <div 
                   key={idx} 
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-full ${
-                    darkMode ? 'bg-gray-800 hover:bg-gray-600' : 'bg-blue-100 hover:bg-blue-200'
-                  } text-sm font-medium transition-all transform hover:scale-105 cursor-pointer`}
+                  className={`flex flex-col items-center space-y-2 px-4 py-6 rounded-2xl shadow-md ${darkMode ? 'bg-gray-900 hover:bg-blue-900/60' : 'bg-blue-100 hover:bg-blue-200/80'} text-base font-semibold transition-all transform hover:scale-110 cursor-pointer animate-fadeIn w-32 h-32`}
                   title={skill.name}
+                  style={{ animationDelay: `${idx * 60}ms` }}
                 >
-                  <img src={skill.icon} alt={skill.name} className="w-5 h-5" />
-                  <span>{skill.name}</span>
+                  <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-2 object-contain animate-bounce-slow" />
+                  <span className="text-center text-sm break-words">{skill.name}</span>
                 </div>
               ))}
             </div>
