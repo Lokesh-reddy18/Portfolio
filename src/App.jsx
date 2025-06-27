@@ -361,7 +361,7 @@ const App = () => {
                       </li>
                       <li className="flex items-start">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600 mr-2 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15.75c-2.648 0-5.195-.496-7.594-1.437L2 15.75V13.5A23.93 23.93 0 0012 11.25c2.648 0 5.195.496 7.594 1.437l.406.163z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15.75c-2.648 0-5.195-.496-7.594-1.437L2 15.75V13.5A23.93 23.93 0 0112 11.25c2.648 0 5.195.496 7.594 1.437l.406.163z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1.5m0 15V18m-7.5-7.5h1.5m15 0h1.5m-1.5 0h-1.5m-15 0h1.5" />
                         </svg>
                         <div>
@@ -496,14 +496,14 @@ const App = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className={`py-20 ${darkMode ? 'bg-slate-800' : 'bg-slate-50'} transition-colors duration-300`}>
+      <section id="contact" className={`py-20 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} transition-colors duration-300`}>
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className={`text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r ${darkMode ? 'from-white to-blue-200' : 'from-slate-900 to-blue-800'} bg-clip-text text-transparent`}>
+              <h2 className={`text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r ${darkMode ? 'from-gray-100 to-blue-200' : 'from-gray-900 to-blue-800'} bg-clip-text text-transparent`}>
                 Get In Touch
               </h2>
-              <p className={`text-xl ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+              <p className={`text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                 Let's discuss opportunities, projects, or collaborations
               </p>
             </div>
@@ -512,10 +512,10 @@ const App = () => {
               {/* Contact Information */}
               <div className="space-y-8">
                 <div>
-                  <h3 className={`text-2xl font-bold ${darkMode ? 'text-slate-200' : 'text-slate-800'} mb-6`}>
+                  <h3 className={`text-2xl font-bold ${darkMode ? 'text-gray-200' : 'text-gray-800'} mb-6`}>
                     Let's Connect
                   </h3>
-                  <p className={`${darkMode ? 'text-slate-300' : 'text-slate-600'} leading-relaxed mb-8`}>
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} leading-relaxed mb-8`}>
                     I'm always open to discussing new opportunities, interesting projects, 
                     internships, or just having a chat about technology and development. 
                     Feel free to reach out through any of the channels below.
@@ -530,10 +530,10 @@ const App = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className={`font-semibold ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>Email</h4>
+                      <h4 className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>Email</h4>
                       <a
                         href="mailto:kollilokeshreddy18@gmail.com"
-                        className={`${darkMode ? 'text-slate-300 hover:text-blue-400' : 'text-slate-600 hover:text-blue-600'} transition-colors duration-300`}
+                        className={`${darkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors duration-300`}
                       >
                         kollilokeshreddy18@gmail.com
                       </a>
@@ -547,10 +547,10 @@ const App = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className={`font-semibold ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>Phone</h4>
+                      <h4 className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>Phone</h4>
                       <a
                         href="tel:+918885208299"
-                        className={`${darkMode ? 'text-slate-300 hover:text-green-400' : 'text-slate-600 hover:text-green-600'} transition-colors duration-300`}
+                        className={`${darkMode ? 'text-gray-300 hover:text-green-400' : 'text-gray-600 hover:text-green-600'} transition-colors duration-300`}
                       >
                         +91-888-5208-299
                       </a>
@@ -565,8 +565,8 @@ const App = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className={`font-semibold ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>Location</h4>
-                      <span className={`${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                      <h4 className={`font-semibold ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>Location</h4>
+                      <span className={`${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                         Silchar, Assam, India
                       </span>
                     </div>
@@ -575,11 +575,11 @@ const App = () => {
               </div>
 
               {/* Contact Form */}
-              <div className={`${darkMode ? 'bg-slate-900' : 'bg-white'} rounded-2xl p-8 shadow-lg`}>
+              <div className={`${darkMode ? 'bg-gray-900' : 'bg-white'} rounded-2xl p-8 shadow-lg`}>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-2`}>
+                      <label htmlFor="name" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
                         Name
                       </label>
                       <input
@@ -589,12 +589,12 @@ const App = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className={`w-full px-4 py-3 border ${darkMode ? 'border-slate-600 bg-slate-800 text-slate-100' : 'border-slate-300 bg-white text-slate-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
+                        className={`w-full px-4 py-3 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
                         placeholder="Your Name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-2`}>
+                      <label htmlFor="email" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
                         Email
                       </label>
                       <input
@@ -604,14 +604,14 @@ const App = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className={`w-full px-4 py-3 border ${darkMode ? 'border-slate-600 bg-slate-800 text-slate-100' : 'border-slate-300 bg-white text-slate-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
+                        className={`w-full px-4 py-3 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
                         placeholder="your@email.com"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-2`}>
+                    <label htmlFor="subject" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
                       Subject
                     </label>
                     <input
@@ -621,13 +621,13 @@ const App = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className={`w-full px-4 py-3 border ${darkMode ? 'border-slate-600 bg-slate-800 text-slate-100' : 'border-slate-300 bg-white text-slate-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
+                      className={`w-full px-4 py-3 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
                       placeholder="What's this about?"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-2`}>
+                    <label htmlFor="message" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
                       Message
                     </label>
                     <textarea
@@ -637,7 +637,7 @@ const App = () => {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className={`w-full px-4 py-3 border ${darkMode ? 'border-slate-600 bg-slate-800 text-slate-100' : 'border-slate-300 bg-white text-slate-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300 resize-none`}
+                      className={`w-full px-4 py-3 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300 resize-none`}
                       placeholder="Tell me about your project or just say hello!"
                     />
                   </div>
@@ -671,7 +671,7 @@ const App = () => {
       </section>
 
       {/* Footer */}
-      <footer className={`${darkMode ? 'bg-slate-950' : 'bg-slate-900'} text-white py-16`}>
+      <footer className={`${darkMode ? 'bg-gray-900 border-t border-gray-800' : 'bg-gray-900'} text-white py-16`}>
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -681,20 +681,20 @@ const App = () => {
                   <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
                     Kolli Lokesh Reddy
                   </h3>
-                  <p className="text-slate-400">
+                  <p className="text-gray-400">
                     Full-Stack Developer & Competitive Programmer
                   </p>
                 </div>
                 
                 {/* NPX Badge */}
-                <div className={`${darkMode ? 'bg-slate-800' : 'bg-slate-800'} rounded-lg p-4 border border-slate-700`}>
-                  <p className="text-slate-300 text-sm mb-2">Try my CLI:</p>
+                <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-800 border-gray-700'} rounded-lg p-4 border`}>
+                  <p className="text-gray-300 text-sm mb-2">Try my CLI:</p>
                   <div className="flex items-center space-x-2 bg-black rounded-md p-3 font-mono text-sm">
                     <span className="text-green-400">$</span>
-                    <span className="text-slate-300 flex-1">{npxCommand}</span>
+                    <span className="text-gray-300 flex-1">{npxCommand}</span>
                     <button
                       onClick={copyToClipboard}
-                      className="text-slate-400 hover:text-white transition-colors duration-300 p-1"
+                      className="text-gray-400 hover:text-white transition-colors duration-300 p-1"
                       title="Copy to clipboard"
                     >
                       {copied ? (
@@ -716,7 +716,7 @@ const App = () => {
 
               {/* Quick Links */}
               <div>
-                <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+                <h4 className="text-lg font-semibold mb-4 text-gray-200">Quick Links</h4>
                 <ul className="space-y-2">
                   {['About', 'Skills', 'Projects', 'Contact'].map((link) => (
                     <li key={link}>
@@ -727,7 +727,7 @@ const App = () => {
                             element.scrollIntoView({ behavior: 'smooth' });
                           }
                         }}
-                        className="text-slate-400 hover:text-white transition-colors duration-300"
+                        className="text-gray-400 hover:text-white transition-colors duration-300"
                       >
                         {link}
                       </button>
@@ -738,7 +738,7 @@ const App = () => {
 
               {/* Connect */}
               <div>
-                <h4 className="text-lg font-semibold mb-4">Let's Connect</h4>
+                <h4 className="text-lg font-semibold mb-4 text-gray-200">Let's Connect</h4>
                 <div className="flex space-x-4 mb-4">
                   {socialLinks.map((social) => (
                     <a
@@ -746,22 +746,22 @@ const App = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`text-slate-400 ${social.color} transition-colors duration-300`}
+                      className={`text-gray-400 ${social.color} transition-colors duration-300`}
                       title={social.name}
                     >
                       {social.icon}
                     </a>
                   ))}
                 </div>
-                <p className="text-slate-400 text-sm">
+                <p className="text-gray-400 text-sm">
                   Available for internships and exciting opportunities.
                 </p>
               </div>
             </div>
 
             {/* Bottom Bar */}
-            <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <p className="text-slate-400 text-sm flex items-center">
+            <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <p className="text-gray-400 text-sm flex items-center">
                 &copy; {new Date().getFullYear()} Kolli Lokesh Reddy. All rights reserved.
                 <span className="inline-block align-middle ml-2 mb-1">
                   <img
@@ -780,7 +780,7 @@ const App = () => {
                   />
                 </span>
               </p>
-              <div className="flex items-center space-x-4 text-sm text-slate-400">
+              <div className="flex items-center space-x-4 text-sm text-gray-400">
                 <span>Built with React & Tailwind CSS</span>
                 <span>•</span>
                 <span>Hosted on Netlify</span>
