@@ -70,7 +70,7 @@ const App = () => {
     {
       title: "Chess Master - Online Chess Platform",
       description: "Developed a full-stack chess platform with real-time multiplayer, puzzles and AI integration. Engineered real-time game functionality using Socket.IO with move validation and game state management.",
-      technologies: ["React.js", "Node.js", "Socket.IO", "MongoDB", "Redux", "Tailwind CSS", "JWT", "Chess.js"],
+      technologies: ["React.js", "Node.js","Express.js", "Socket.IO", "MongoDB", "Tailwind CSS", "Chess.js", "Stockfish API"],
       image: "/projects/chess.png",
       demoUrl: "https://chess-frontend-iota-two.vercel.app",
       githubUrl: "https://github.com/Lokesh-reddy18/Chess-frontend"
@@ -78,19 +78,44 @@ const App = () => {
     {
       title: "JobQuest - MERN Stack Job Portal",
       description: "Built a job portal for job seekers to search/apply and recruiters to post/manage listings. Implemented secure authentication, job search filters, and recruiter dashboards.",
-      technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JWT", "Clerk"],
+      technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Clerk"],
       image: "/projects/job_quest.png",
       demoUrl: "https://job-quest-eight.vercel.app",
       githubUrl: "https://github.com/Lokesh-reddy18/JobQuest"
     },
     {
-      title: "Dijkstra Travel Planner - Route Optimization System",
-      description: "Developed a travel route planner using Dijkstra's algorithm for optimal paths. Implemented efficient graph data structures and priority queue optimization with Leaflet API integration.",
-      technologies: ["C++", "Graph Algorithms", "Priority Queues", "Leaflet API", "HTML"],
-      image: "/projects/dijkstra.png",
-      demoUrl: "https://github.com/Lokesh-reddy18/Dijkstra-Travel-Planner",
-      githubUrl: "https://github.com/Lokesh-reddy18/Dijkstra-Travel-Planner"
-    }
+      title: "Ace Bot AI - AI Interview Preparation Platform",
+      description:
+        "Ace Bot AI is a full-stack web application that uses AI to help users prepare for interviews. It offers personalized interview questions, session management, and a responsive interface.",
+      technologies: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Gemini API"],
+      image: "/projects/acebotai.png",
+      demoUrl: "https://ace-bot-ai.vercel.app/",
+      githubUrl: "https://github.com/Lokesh-reddy18/Ace-Bot-AI"
+    },
+    // {
+    //   title: "Dijkstra Travel Planner - Route Optimization System",
+    //   description: "Developed a travel route planner using Dijkstra's algorithm for optimal paths. Implemented efficient graph data structures and priority queue optimization with Leaflet API integration.",
+    //   technologies: ["C++", "Graph Algorithms", "Priority Queues", "Leaflet API", "HTML"],
+    //   image: "/projects/dijkstra.png",
+    //   demoUrl: "https://github.com/Lokesh-reddy18/Dijkstra-Travel-Planner",
+    //   githubUrl: "https://github.com/Lokesh-reddy18/Dijkstra-Travel-Planner"
+    // },
+    // {
+    //   title: "MedSync - Healthcare Appointment System",
+    //   description: "Developed a healthcare appointment system using React.js and Node.js. Implemented user authentication, appointment scheduling, and a responsive UI.",
+    //   technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Stripe API"],
+    //   image: "/projects/medsync.png",
+    //   demoUrl: "https://med-sync-client.vercel.app/",
+    //   githubUrl: "https://github.com/Lokesh-reddy18/MedSync-Client"
+    // },
+    // {
+    //   title: "India Growth Explorer",
+    //   description: "A data visualization dashboard for exploring India's growth metrics across states and cities. Features interactive maps, timelines, rankings, and insights, with a modern responsive UI.",
+    //   technologies: ["React.js", "React Router", "CSS", "D3.js", "Leaflet", "Recharts", "Chart.js"],
+    //   image: "/projects/indiagrowth.png",
+    //   demoUrl: "https://india-growth-explorer.vercel.app/",        
+    //   githubUrl: "https://github.com/Lokesh-reddy18/India-Growth-Explorer"   
+    // }
   ];
 
   const handleScroll = (section) => {
@@ -149,7 +174,7 @@ const App = () => {
     },
     {
       name: 'Instagram',
-      url: 'https://instagram.com/', // Replace with your Instagram URL
+      url: 'https://instagram.com/lokesh_reddy18', // Replace with your Instagram URL
       color: 'hover:text-pink-400',
       icon: (
         <img
@@ -162,24 +187,39 @@ const App = () => {
   ];
 
   // Skill icon slugs and display names for skillicons.dev
-  const skills = [
-    { name: 'C', slug: 'c' },
-    { name: 'C++', slug: 'cpp' },
-    { name: 'HTML', slug: 'html' },
-    { name: 'CSS', slug: 'css' },
-    { name: 'JavaScript', slug: 'javascript' },
-    { name: 'Java', slug: 'java' },
-    { name: 'React.js', slug: 'react' },
-    { name: 'Node.js', slug: 'nodejs' },
-    { name: 'Express.js', slug: 'express' },
-    { name: 'jQuery', slug: 'jquery' },
-    { name: 'TailwindCSS', slug: 'tailwindcss' },
-    { name: 'Bootstrap', slug: 'bootstrap' },
-    { name: 'Git', slug: 'git' },
-    { name: 'GitHub', slug: 'github' },
-    { name: 'MongoDB', slug: 'mongodb' },
-    { name: 'MySQL', slug: 'mysql' }
-  ];
+const skills = [
+  // Programming Languages
+  { name: 'C', slug: 'c' },
+  { name: 'C++', slug: 'cpp' },
+  { name: 'Java', slug: 'java' },
+  { name: 'JavaScript', slug: 'javascript' },
+  { name: 'Typescript', slug: 'typescript' },
+  // Markup & Styles
+  { name: 'HTML', slug: 'html' },
+  { name: 'CSS', slug: 'css' },
+  { name: 'Latex', slug: 'latex' },
+  // Databases
+  { name: 'MongoDB', slug: 'mongodb' },
+  { name: 'MySQL', slug: 'mysql' },
+  // Frameworks & Libraries
+  { name: 'Bootstrap', slug: 'bootstrap' },
+  { name: 'TailwindCSS', slug: 'tailwindcss' },
+  { name: 'Express.js', slug: 'express' },
+  { name: 'Next.js', slug: 'nextjs' },
+  { name: 'Node.js', slug: 'nodejs' },
+  { name: 'React.js', slug: 'react' },
+  { name: 'Redux', slug: 'redux' },
+  { name: 'jQuery', slug: 'jquery' },
+  { name: 'D3.js', slug: 'd3' },
+  { name: 'Vite', slug: 'vite' },
+  // Tools & Editors
+  { name: 'Git', slug: 'git' },
+  { name: 'GitHub', slug: 'github' },
+  { name: 'NPM', slug: 'npm' },
+  { name: 'VS Code', slug: 'vscode' },
+  { name: 'Atom', slug: 'atom' },
+  { name: 'Sublime Text', slug: 'sublime' },
+];
 
   return (
     <div className={darkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-800'}>
@@ -348,10 +388,13 @@ const App = () => {
         </div>
       </section>    
         {/* About Section */}
-      <section id="about" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+      <section id="about" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}> 
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center">About Me</h2>
+            <h2 className="text-4xl font-bold mb-4 text-center">About Me</h2>
+            <div className="text-center mb-12">
+              <span className={`text-lg font-medium tracking-wide ${darkMode ? 'text-blue-200' : 'text-blue-800'}`}>Who I am & what I do</span>
+            </div>
             
             <div className="flex flex-col md:flex-row gap-8">
               <div className="md:w-1/2">
@@ -435,7 +478,10 @@ const App = () => {
       {/* Skills Section */}
       <section id="skills" className={`py-20 transition-colors duration-300 ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-800'}`}> 
         <div className="container mx-auto px-6">
-          <h2 className={`text-3xl font-bold text-center mb-16 ${darkMode ? 'text-blue-200' : 'text-blue-800'}`}>Skills</h2>
+          <h2 className={"text-4xl font-bold text-center mb-4 "}>Skills</h2>
+          <div className="text-center mb-12">
+            <span className={`text-lg font-medium tracking-wide ${darkMode ? 'text-blue-200' : 'text-blue-800'}`}>Technologies & tools I work with</span>
+          </div>
           <div className={`${darkMode ? 'bg-gray-800' : 'bg-white'} p-8 rounded-lg shadow-md`}>
             <div className="flex flex-wrap justify-center gap-4">
               {skills.map((skill, idx) => (
@@ -459,9 +505,12 @@ const App = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+      <section id="projects" className={`py-20 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}> 
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-16 text-center">Projects</h2>
+          <h2 className="text-4xl font-bold mb-4 text-center">Projects</h2>
+          <div className="text-center mb-12">
+            <span className={`text-lg font-medium tracking-wide ${darkMode ? 'text-blue-200' : 'text-blue-800'}`}>Some of the things I've built</span>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {projects.map((project, index) => (
               <div 
