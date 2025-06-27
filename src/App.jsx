@@ -54,7 +54,7 @@ const App = () => {
   };
 
   // Copy NPX command to clipboard
-  const npxCommand = "npx kolli-lokesh-reddy";
+  const npxCommand = "npx lokeshreddy";
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(npxCommand);
@@ -575,11 +575,11 @@ const App = () => {
               </div>
 
               {/* Contact Form */}
-              <div className={`${darkMode ? 'bg-gray-900' : 'bg-white'} rounded-2xl p-8 shadow-lg`}>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
+              <div className={`${darkMode ? 'bg-gray-900' : 'bg-white'} rounded-2xl p-6 shadow-lg`}> {/* Reduced padding from p-8 to p-6 */}
+                <form onSubmit={handleSubmit} className="space-y-4"> {/* Reduced vertical spacing */}
+                  <div className="grid sm:grid-cols-2 gap-4"> {/* Reduced gap */}
                     <div>
-                      <label htmlFor="name" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
+                      <label htmlFor="name" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-1`}> {/* Reduced margin */}
                         Name
                       </label>
                       <input
@@ -589,12 +589,12 @@ const App = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className={`w-full px-4 py-3 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
+                        className={`w-full px-3 py-2 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
                         placeholder="Your Name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
+                      <label htmlFor="email" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-1`}>
                         Email
                       </label>
                       <input
@@ -604,14 +604,14 @@ const App = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className={`w-full px-4 py-3 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
+                        className={`w-full px-3 py-2 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
                         placeholder="your@email.com"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
+                    <label htmlFor="subject" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-1`}>
                       Subject
                     </label>
                     <input
@@ -621,13 +621,13 @@ const App = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className={`w-full px-4 py-3 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
+                      className={`w-full px-3 py-2 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300`}
                       placeholder="What's this about?"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="message" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-2`}>
+                    <label htmlFor="message" className={`block text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-1`}>
                       Message
                     </label>
                     <textarea
@@ -636,8 +636,8 @@ const App = () => {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      rows={6}
-                      className={`w-full px-4 py-3 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300 resize-none`}
+                      rows={4} // Reduced from 6 to 4
+                      className={`w-full px-3 py-2 border ${darkMode ? 'border-gray-600 bg-gray-800 text-gray-100' : 'border-gray-300 bg-white text-gray-900'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300 resize-none`}
                       placeholder="Tell me about your project or just say hello!"
                     />
                   </div>
@@ -645,7 +645,7 @@ const App = () => {
                   <button
                     type="submit"
                     disabled={isSubmitted}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center disabled:opacity-75 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center disabled:opacity-75 disabled:cursor-not-allowed"
                   >
                     {isSubmitted ? (
                       <>
@@ -657,7 +657,7 @@ const App = () => {
                     ) : (
                       <>
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                         Send Message
                       </>
@@ -671,30 +671,29 @@ const App = () => {
       </section>
 
       {/* Footer */}
-      <footer className={`${darkMode ? 'bg-gray-900 border-t border-gray-800' : 'bg-gray-900'} text-white py-16`}>
+      <footer className={`${darkMode ? 'bg-gray-900 border-t border-gray-800 text-gray-200' : 'bg-white border-t border-gray-200 text-gray-800'} transition-colors duration-300 py-16`}>
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               {/* Logo and NPX Badge */}
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                     Kolli Lokesh Reddy
                   </h3>
-                  <p className="text-gray-400">
+                  <p className={`${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                     Full-Stack Developer & Competitive Programmer
                   </p>
                 </div>
-                
                 {/* NPX Badge */}
-                <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-800 border-gray-700'} rounded-lg p-4 border`}>
-                  <p className="text-gray-300 text-sm mb-2">Try my CLI:</p>
-                  <div className="flex items-center space-x-2 bg-black rounded-md p-3 font-mono text-sm">
+                <div className={`${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'} rounded-lg p-4 border max-w-xs`}> {/* Added max-w-xs to reduce width */}
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-600'} text-sm mb-2`}>Meet me in your terminal:</p>
+                  <div className={`flex items-center space-x-2 ${darkMode ? 'bg-black' : 'bg-gray-200'} rounded-md p-3 font-mono text-sm`}>
                     <span className="text-green-400">$</span>
-                    <span className="text-gray-300 flex-1">{npxCommand}</span>
+                    <span className={`${darkMode ? 'text-gray-300' : 'text-gray-800'} flex-1`}>{npxCommand}</span>
                     <button
                       onClick={copyToClipboard}
-                      className="text-gray-400 hover:text-white transition-colors duration-300 p-1"
+                      className={`${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-800'} transition-colors duration-300 p-1`}
                       title="Copy to clipboard"
                     >
                       {copied ? (
@@ -713,10 +712,9 @@ const App = () => {
                   )}
                 </div>
               </div>
-
               {/* Quick Links */}
               <div>
-                <h4 className="text-lg font-semibold mb-4 text-gray-200">Quick Links</h4>
+                <h4 className="text-lg font-semibold mb-4 text-gray-600">Quick Links</h4>
                 <ul className="space-y-2">
                   {['About', 'Skills', 'Projects', 'Contact'].map((link) => (
                     <li key={link}>
@@ -727,7 +725,7 @@ const App = () => {
                             element.scrollIntoView({ behavior: 'smooth' });
                           }
                         }}
-                        className="text-gray-400 hover:text-white transition-colors duration-300"
+                        className={`${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-blue-600'} transition-colors duration-300`}
                       >
                         {link}
                       </button>
@@ -735,10 +733,9 @@ const App = () => {
                   ))}
                 </ul>
               </div>
-
               {/* Connect */}
               <div>
-                <h4 className="text-lg font-semibold mb-4 text-gray-200">Let's Connect</h4>
+                <h4 className="text-lg font-semibold mb-4 text-gray-600">Let's Connect</h4>
                 <div className="flex space-x-4 mb-4">
                   {socialLinks.map((social) => (
                     <a
@@ -746,22 +743,21 @@ const App = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`text-gray-400 ${social.color} transition-colors duration-300`}
+                      className={`text-gray-600 ${social.color} transition-colors duration-300`}
                       title={social.name}
                     >
                       {social.icon}
                     </a>
                   ))}
                 </div>
-                <p className="text-gray-400 text-sm">
-                  Available for internships and exciting opportunities.
+                <p className={`${darkMode ? 'text-gray-400' : 'text-gray-500'} text-sm`}>
+                  Actively seeking full-time placement and internship opportunities in software development.
                 </p>
               </div>
             </div>
-
             {/* Bottom Bar */}
-            <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <p className="text-gray-400 text-sm flex items-center">
+            <div className={`border-t pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
+              <p className={`text-sm flex items-center ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                 &copy; {new Date().getFullYear()} Kolli Lokesh Reddy. All rights reserved.
                 <span className="inline-block align-middle ml-2 mb-1">
                   <img
@@ -780,10 +776,8 @@ const App = () => {
                   />
                 </span>
               </p>
-              <div className="flex items-center space-x-4 text-sm text-gray-400">
+              <div className={`flex items-center space-x-4 text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                 <span>Built with React & Tailwind CSS</span>
-                <span>•</span>
-                <span>Hosted on Netlify</span>
               </div>
             </div>
           </div>
