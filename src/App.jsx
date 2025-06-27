@@ -85,8 +85,8 @@ const App = () => {
     },
     {
       title: "Dijkstra Travel Planner - Route Optimization System",
-      description: "Developed a travel route planner using Dijkstra's algorithm for optimal paths. Implemented efficient graph data structures and priority queue optimization with Google Maps API integration.",
-      technologies: ["C++", "Graph Algorithms", "Priority Queues", "Google Maps API", "HTML"],
+      description: "Developed a travel route planner using Dijkstra's algorithm for optimal paths. Implemented efficient graph data structures and priority queue optimization with Leaflet API integration.",
+      technologies: ["C++", "Graph Algorithms", "Priority Queues", "Leaflet API", "HTML"],
       image: "/projects/dijkstra.png",
       demoUrl: "https://github.com/Lokesh-reddy18/Dijkstra-Travel-Planner",
       githubUrl: "https://github.com/Lokesh-reddy18/Dijkstra-Travel-Planner"
@@ -271,7 +271,7 @@ const App = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
             <div className="w-full md:w-1/2 order-2 md:order-1 text-center md:text-left">
-              <h2 className={`text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight ${darkMode ? 'text-blue-200' : 'text-blue-800'}`}>Hi, I'm Kolli Lokesh Reddy</h2>
+              <h2 className={`text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight ${darkMode ? 'text-blue-100' : 'text-blue-800'}`}>Hi, I'm Kolli Lokesh Reddy</h2>
               <p className={`mb-10 text-lg sm:text-xl font-medium ${darkMode ? 'text-blue-100/90' : 'text-gray-700'}`}>A passionate developer with expertise in full-stack development and competitive programming. Currently seeking placement opportunities to contribute to innovative software projects.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <a
@@ -728,7 +728,7 @@ const App = () => {
               </div>
               {/* Quick Links */}
               <div>
-                <h4 className="text-lg font-semibold mb-4 text-gray-600">Quick Links</h4>
+                <h4 className={`text-md font-semibold mb-4 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>Quick Links</h4>
                 <ul className="space-y-2">
                   {['About', 'Skills', 'Projects', 'Contact'].map((link) => (
                     <li key={link}>
@@ -749,7 +749,7 @@ const App = () => {
               </div>
               {/* Connect */}
               <div>
-                <h4 className="text-lg font-semibold mb-4 text-gray-600">Let's Connect</h4>
+                <h4 className={`text-md font-semibold mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>Let's Connect</h4>
                 <div className="flex space-x-4 mb-4">
                   {socialLinks.map((social) => (
                     <a
