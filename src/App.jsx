@@ -792,29 +792,26 @@ const App = () => {
               </div>
             </div>
             {/* Bottom Bar */}
-            <div className={`border-t pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
-              <p className={`text-sm flex items-center ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+            <div className={`border-t pt-8 flex flex-col justify-center items-center space-y-4 ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>  
+              <p className={`text-md font-semibold flex items-center justify-center ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} style={{ width: '100%' }}>
                 &copy; {new Date().getFullYear()} Kolli Lokesh Reddy. All rights reserved.
                 <span className="inline-block align-middle ml-2 mb-1">
                   <img
                     src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Purple%20Heart.png"
                     alt="Purple Heart"
-                    width="20"
-                    height="20"
+                    width="22"
+                    height="22"
                     style={{ display: 'inline', margin: 0, padding: 0 }}
                   />
                   <img
                     src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Ghost.png"
                     alt="Ghost"
-                    width="20"
-                    height="20"
+                    width="22"
+                    height="22"
                     style={{ display: 'inline', margin: 0, padding: 0 }}
                   />
                 </span>
               </p>
-              <div className={`flex items-center space-x-4 text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                <span>Built with React & Tailwind CSS</span>
-              </div>
             </div>
           </div>
         </div>
