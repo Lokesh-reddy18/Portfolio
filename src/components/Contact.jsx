@@ -3,7 +3,7 @@ import { profile } from '../data/profile';
 import Reveal from './Reveal';
 import Ripple from './Ripple';
 import SectionHeading from './SectionHeading';
-import { CheckCircleIcon, LocationIcon, MailIcon } from './icons';
+import { CheckCircleIcon, CopyIcon, LocationIcon, MailIcon } from './icons';
 
 const emptyForm = { name: '', email: '', subject: '', message: '' };
 
@@ -37,6 +37,17 @@ const Field = ({ id, label, multiline, ...props }) => {
 const Contact = () => {
   const [formData, setFormData] = useState(emptyForm);
   const [status, setStatus] = useState('idle');
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${profile.email}`;
+    }
+  };
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -75,18 +86,34 @@ const Contact = () => {
             Mobile architecture, BFF design, a side project idea or just a good tech conversation. My inbox is open.
           </SectionHeading>
           <Reveal delay={100} className="flex flex-col gap-3">
-            <a
-              href={`mailto:${profile.email}`}
-              className="group flex items-center gap-4 p-4 rounded-3xl bg-surface-card hover:bg-primary-container transition-colors"
-            >
-              <span className="grid place-items-center w-12 h-12 rounded-2xl bg-primary text-on-primary transition-transform group-hover:scale-110">
-                <MailIcon className="w-6 h-6" />
-              </span>
-              <span className="min-w-0">
-                <span className="block text-sm text-on-surface-variant">Email</span>
-                <span className="block font-semibold break-all">{profile.email}</span>
-              </span>
-            </a>
+            <div className="flex items-center gap-2 p-2 pr-3 rounded-3xl bg-surface-card">
+              <a
+                href={`mailto:${profile.email}`}
+                className="group flex-1 min-w-0 flex items-center gap-4 p-2 rounded-2xl hover:bg-primary-container/60 transition-colors"
+              >
+                <span className="grid place-items-center w-12 h-12 flex-shrink-0 rounded-2xl bg-primary text-on-primary transition-transform group-hover:scale-110">
+                  <MailIcon className="w-6 h-6" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-sm text-on-surface-variant">Email</span>
+                  <span className="block font-semibold break-all">{profile.email}</span>
+                </span>
+              </a>
+              <Ripple
+                type="button"
+                onClick={copyEmail}
+                aria-label={emailCopied ? 'Email copied' : 'Copy email address'}
+                title="Copy email"
+                className="grid place-items-center w-11 h-11 flex-shrink-0 rounded-full text-on-surface-variant hover:bg-surface-high hover:text-primary transition-colors"
+              >
+                <span key={String(emailCopied)} className="animate-fadeIn">
+                  {emailCopied ? <CheckCircleIcon className="w-5 h-5 text-primary" /> : <CopyIcon className="w-5 h-5" />}
+                </span>
+              </Ripple>
+            </div>
+            <p aria-live="polite" className="sr-only">
+              {emailCopied ? 'Email address copied to clipboard' : ''}
+            </p>
             <div className="flex items-center gap-4 p-4 rounded-3xl bg-surface-card">
               <span className="grid place-items-center w-12 h-12 rounded-2xl bg-secondary-container text-on-secondary-container">
                 <LocationIcon className="w-6 h-6" />

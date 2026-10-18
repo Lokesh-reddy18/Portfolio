@@ -53,6 +53,11 @@ body {
   @apply bg-surface text-on-surface font-body antialiased;
 }
 
+::selection {
+  background: rgb(var(--md-primary-container));
+  color: rgb(var(--md-on-primary-container));
+}
+
 /* Keeps anchor jumps from hiding section headings under the fixed header. */
 section[id] {
   scroll-margin-top: 6rem;

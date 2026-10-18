@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { experience, education } from '../data/experience';
 import { profile } from '../data/profile';
 
@@ -84,9 +84,46 @@ const screens = [
   { name: 'Code', Component: CodeScreen },
 ];
 
+const MAX_TILT_DEG = 10;
+
+// Leans the phone toward the mouse. Mouse/trackpad only: touch has no hover position to follow.
+function useCursorTilt() {
+  const ref = useRef(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const canTilt =
+      window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!canTilt) return;
+    let frame;
+    const onMove = (e) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const rect = ref.current?.getBoundingClientRect();
+        if (!rect) return;
+        const dx = (e.clientX - (rect.left + rect.width / 2)) / (window.innerWidth / 2);
+        const dy = (e.clientY - (rect.top + rect.height / 2)) / (window.innerHeight / 2);
+        const clamp = (v) => Math.max(-1, Math.min(1, v));
+        setTilt({ x: clamp(-dy) * MAX_TILT_DEG, y: clamp(dx) * MAX_TILT_DEG });
+      });
+    };
+    const reset = () => setTilt({ x: 0, y: 0 });
+    window.addEventListener('pointermove', onMove);
+    document.documentElement.addEventListener('pointerleave', reset);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('pointermove', onMove);
+      document.documentElement.removeEventListener('pointerleave', reset);
+    };
+  }, []);
+
+  return [ref, tilt];
+}
+
 const PhoneMockup = () => {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [tiltRef, tilt] = useCursorTilt();
 
   useEffect(() => {
     if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -104,7 +141,11 @@ const PhoneMockup = () => {
         onFocus={() => setPaused(true)}
         onBlur={() => setPaused(false)}
       >
-        <div className="w-[280px] h-[560px] sm:w-[300px] sm:h-[600px] rounded-[3rem] bg-[#221A13] p-3 shadow-[0_40px_80px_-30px_rgba(80,40,0,0.55)]">
+        <div
+          ref={tiltRef}
+          className="w-[280px] h-[560px] sm:w-[300px] sm:h-[600px] rounded-[3rem] bg-[#221A13] p-3 shadow-[0_40px_80px_-30px_rgba(80,40,0,0.55)] transition-transform duration-300 ease-out"
+          style={{ transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
+        >
           <div className="relative w-full h-full rounded-[2.4rem] bg-surface overflow-hidden flex flex-col">
             <div className="mx-auto mt-3 w-20 h-1.5 rounded-full bg-outline-variant" />
             <div className="relative flex-1 overflow-hidden">
