@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Page not found · Kolli Lokesh Reddy</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Figtree:wght@400;600&family=JetBrains+Mono:wght@500&display=swap" />
+    <!-- Same theme rule as the main site: saved choice first, else the OS setting. -->
+    <script>
+      try {
+        var saved = localStorage.getItem('darkMode');
+        var dark = saved !== null ? saved === 'true' : matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
+    <style>
+      :root {
+        --primary: #8b5000; --on-primary: #fff; --primary-container: #ffdcbe; --on-primary-container: #2c1600;
+        --surface: #fff8f3; --surface-high: #efe4da; --on-surface: #221a13; --on-surface-variant: #52443a; --outline: #85736a;
+      }
+      .dark {
+        --primary: #ffb870; --on-primary: #4a2800; --primary-container: #693c00; --on-primary-container: #ffdcbe;
+        --surface: #19120c; --surface-high: #31281f; --on-surface: #efe0d5; --on-surface-variant: #d6c3b4; --outline: #9f8d80;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
+        background: var(--surface); color: var(--on-surface); font-family: 'Figtree', system-ui, sans-serif;
+      }
+      main { max-width: 560px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+      .code {
+        font-family: 'Outfit', sans-serif; font-weight: 700; font-size: clamp(96px, 22vw, 160px); line-height: 1;
+        letter-spacing: -0.04em; color: var(--primary);
+        animation: rise 0.7s cubic-bezier(0.2, 0, 0, 1) both;
+      }
+      h1 { margin: 0; font-family: 'Outfit', sans-serif; font-size: 32px; animation: rise 0.7s 0.1s cubic-bezier(0.2, 0, 0, 1) both; }
+      p { margin: 0; font-size: 18px; line-height: 1.6; color: var(--on-surface-variant); animation: rise 0.7s 0.2s cubic-bezier(0.2, 0, 0, 1) both; }
+      .log {
+        font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 10px 16px; border-radius: 14px;
+        background: var(--surface-high); color: var(--on-surface-variant); animation: rise 0.7s 0.3s cubic-bezier(0.2, 0, 0, 1) both;
+      }
+      .log b { color: var(--primary); font-weight: 500; }
+      .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; padding-top: 8px; animation: rise 0.7s 0.4s cubic-bezier(0.2, 0, 0, 1) both; }
+      a { display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; font-weight: 600; text-decoration: none; transition: transform 0.2s, background 0.2s; }
+      .primary { background: var(--primary); color: var(--on-primary); }
+      .primary:hover { transform: translateY(-2px); }
+      .secondary { border: 1px solid var(--outline); color: var(--on-surface); }
+      .secondary:hover { background: var(--surface-high); }
+      a:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+      @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="code" aria-hidden="true">404</div>
+      <h1>This screen isn't in the nav graph</h1>
+      <p>The page you're looking for doesn't exist or has moved. Let's get you back somewhere useful.</p>
+      <div class="log" aria-hidden="true"><b>E/Navigation:</b> destination not found</div>
+      <div class="actions">
+        <a class="primary" href="/">Back to home</a>
+        <a class="secondary" href="/#contact">Contact me</a>
+      </div>
+    </main>
+  </body>
+</html>
