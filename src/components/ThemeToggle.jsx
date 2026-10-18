@@ -1,15 +1,18 @@
 import { MoonIcon, SunIcon } from './icons';
+import Ripple from './Ripple';
 
 const ThemeToggle = ({ darkMode, onToggle }) => (
-  <button
+  <Ripple
     onClick={onToggle}
-    className="p-2 rounded-full transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-yellow-300 dark:hover:bg-gray-600"
+    className="grid place-items-center w-11 h-11 rounded-full bg-surface-high text-on-surface-variant hover:text-primary transition-colors"
     aria-label="Dark mode"
     aria-pressed={darkMode}
     title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
   >
-    {darkMode ? <SunIcon /> : <MoonIcon />}
-  </button>
+    <span key={String(darkMode)} className="animate-fadeIn">
+      {darkMode ? <SunIcon /> : <MoonIcon />}
+    </span>
+  </Ripple>
 );
 
 export default ThemeToggle;

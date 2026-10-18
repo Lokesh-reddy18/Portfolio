@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { flushSync } from 'react-dom';
 
 const STORAGE_KEY = 'darkMode';
 
@@ -17,17 +18,37 @@ export function useDarkMode() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', darkMode ? '#19120C' : '#FFF8F3');
   }, [darkMode]);
 
-  const toggleDarkMode = () => {
-    setDarkMode((prev) => {
-      const next = !prev;
-      try {
-        localStorage.setItem(STORAGE_KEY, String(next));
-      } catch {
-        // Ignore: the toggle still works for this visit.
-      }
-      return next;
+  const applyTheme = (next) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, String(next));
+    } catch {
+      // Ignore: the toggle still works for this visit.
+    }
+    setDarkMode(next);
+  };
+
+  // Pass the click event to spread the new theme out from the pointer.
+  const toggleDarkMode = (event) => {
+    const next = !darkMode;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!document.startViewTransition || reduceMotion) {
+      applyTheme(next);
+      return;
+    }
+    const x = event?.clientX ?? window.innerWidth / 2;
+    const y = event?.clientY ?? 0;
+    const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    const root = document.documentElement.style;
+    root.setProperty('--theme-x', `${x}px`);
+    root.setProperty('--theme-y', `${y}px`);
+    root.setProperty('--theme-r', `${radius}px`);
+    // flushSync so the DOM has the new theme when the transition takes its "after" snapshot.
+    document.startViewTransition(() => {
+      flushSync(() => applyTheme(next));
+      document.documentElement.classList.toggle('dark', next);
     });
   };
 

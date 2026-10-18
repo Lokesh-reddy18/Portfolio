@@ -1,52 +1,79 @@
 import { profile } from '../data/profile';
-import { DownloadIcon } from './icons';
+import PhoneMockup from './PhoneMockup';
+import Ripple from './Ripple';
+import { DownloadIcon, PhoneIcon } from './icons';
 
-const button = 'px-8 py-4 rounded-lg shadow font-semibold text-lg transition-all duration-200 text-center';
+const headline = 'I build Android apps people open every day.';
 
 const Hero = () => (
-  <section
-    id="home"
-    className="min-h-screen flex items-center justify-center pt-24 transition-colors duration-300 bg-white text-gray-800 dark:bg-[#302f82] dark:text-gray-100"
-  >
-    <div className="container mx-auto px-4">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-20">
-        <div className="w-full md:w-1/2 order-2 md:order-1 text-center md:text-left">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 leading-tight text-blue-800 dark:text-blue-100">
-            Hi, I&apos;m {profile.name}
-          </h1>
-          <p className="mb-6 text-xl sm:text-2xl font-semibold text-blue-600 dark:text-blue-300">
-            {profile.title} · {profile.focus} @ {profile.company}
-          </p>
-          <p className="mb-10 text-lg sm:text-xl font-medium text-gray-700 dark:text-blue-100/90">{profile.tagline}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a href="#experience" className={`${button} bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-700 dark:hover:bg-blue-800`}>
-              View Work
-            </a>
-            <a
-              href={profile.resumeUrl}
-              download={profile.resumeFileName}
-              className={`${button} flex items-center justify-center gap-2 bg-white border border-blue-600 text-blue-700 hover:bg-blue-50 dark:bg-gray-800 dark:border-blue-400 dark:text-blue-200 dark:hover:bg-gray-700`}
-            >
-              <DownloadIcon />
-              <span>Resume</span>
-            </a>
-            <a
-              href="#contact"
-              className={`${button} bg-blue-100 border border-blue-300 text-blue-900 hover:bg-blue-200 dark:bg-blue-900 dark:border-blue-400 dark:text-blue-100 dark:hover:bg-blue-800`}
-            >
-              Contact Me
-            </a>
-          </div>
-        </div>
-        <div className="w-full md:w-1/2 flex justify-center order-1 md:order-2">
+  <section id="home" className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
+    <div className="max-w-6xl mx-auto px-4 sm:px-8 flex flex-wrap items-center gap-10 sm:gap-16">
+      <div className="flex-[1_1_520px] min-w-0 flex flex-col gap-7">
+        <div className="flex flex-wrap items-center gap-4 animate-rise">
           <img
             src={profile.photo}
             alt={profile.name}
-            width="256"
-            height="256"
-            className="rounded-lg shadow-lg w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover border-4 border-white"
+            width="72"
+            height="72"
+            className="w-[72px] h-[72px] rounded-[1.6rem] object-cover ring-4 ring-primary-container shadow-md"
           />
+          <div className="flex flex-col gap-1.5">
+            <span className="font-display font-semibold text-xl">Hi, I&apos;m Lokesh</span>
+            <span className="self-start inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary-container text-sm font-semibold">
+              <PhoneIcon className="w-4 h-4" />
+              {profile.title} · {profile.focus} @ {profile.company}
+            </span>
+          </div>
         </div>
+
+        <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
+          {headline.split(' ').map((word, i) => (
+            <span key={i} className="inline-block overflow-hidden align-bottom pb-1">
+              <span className="inline-block animate-rise" style={{ animationDelay: `${120 + i * 70}ms` }}>
+                {word === 'Android' ? <span className="text-primary">{word}</span> : word}
+                &nbsp;
+              </span>
+            </span>
+          ))}
+        </h1>
+
+        <p className="text-lg sm:text-xl leading-relaxed text-on-surface-variant max-w-xl animate-rise [animation-delay:700ms]">
+          Kotlin and Jetpack Compose on the Sri Mandir and Sri Panchangam apps, plus the TypeScript BFF APIs behind
+          them. NIT Silchar CSE grad, based in {profile.location.split(',')[0]}.
+        </p>
+
+        <div className="flex flex-wrap gap-3 pt-1 animate-rise [animation-delay:850ms]">
+          <Ripple
+            as="a"
+            href="#work"
+            className="inline-flex items-center min-h-[52px] px-7 rounded-full bg-primary text-on-primary font-semibold shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all"
+          >
+            See my work
+          </Ripple>
+          <Ripple
+            as="a"
+            href="#contact"
+            className="inline-flex items-center min-h-[52px] px-6 rounded-full border border-outline text-on-surface font-semibold hover:bg-surface-high transition-colors"
+          >
+            Get in touch
+          </Ripple>
+          {profile.resumeUrl && (
+            <Ripple
+              as="a"
+              href={profile.resumeUrl}
+              download={profile.resumeFileName}
+              className="inline-flex items-center gap-2 min-h-[52px] px-5 rounded-full text-primary font-semibold hover:bg-primary-container/60 transition-colors"
+            >
+              <DownloadIcon className="w-5 h-5" />
+              Resume
+            </Ripple>
+          )}
+        </div>
+      </div>
+
+      {/* zoom (not transform: scale) so the smaller phone also takes less room in the layout. */}
+      <div className="flex-[1_1_320px] flex justify-center max-sm:[zoom:0.75]">
+        <PhoneMockup />
       </div>
     </div>
   </section>
