@@ -1,8 +1,11 @@
-const SectionHeading = ({ title, subtitle }) => (
-  <div className="text-center mb-12">
-    <h2 className="text-4xl font-bold mb-4">{title}</h2>
-    <span className="text-lg font-medium tracking-wide text-blue-800 dark:text-blue-200">{subtitle}</span>
-  </div>
+import Reveal from './Reveal';
+
+const SectionHeading = ({ eyebrow, title, children }) => (
+  <Reveal className="flex flex-col gap-3 mb-12 max-w-2xl">
+    <span className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{eyebrow}</span>
+    <h2 className="font-display font-bold text-4xl sm:text-5xl tracking-tight">{title}</h2>
+    {children && <p className="text-lg text-on-surface-variant leading-relaxed">{children}</p>}
+  </Reveal>
 );
 
 export default SectionHeading;

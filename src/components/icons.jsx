@@ -31,6 +31,13 @@ export const PlayIcon = ({ className = 'h-5 w-5' }) => (
   </svg>
 );
 
+export const PhoneIcon = ({ className = 'h-5 w-5' }) => (
+  <svg {...outline} className={className} aria-hidden="true">
+    <rect x="5" y="2" width="14" height="20" rx="3" strokeWidth={2} />
+    <Path d="M11 18h2" />
+  </svg>
+);
+
 export const MenuIcon = ({ className = 'h-6 w-6' }) => (
   <svg {...outline} className={className}><Path d="M4 6h16M4 12h16M4 18h16" /></svg>
 );

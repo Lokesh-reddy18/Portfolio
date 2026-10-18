@@ -9,8 +9,8 @@ export const profile = {
   footerTagline: 'Software Engineer · Android',
   email: 'kollilokeshreddy18@gmail.com',
   location: 'Bengaluru, India',
-  photo: '/projects/myimage.png',
-  resumeUrl: '/resume.pdf',
+  photo: '/projects/me.jpg',
+  resumeUrl: import.meta.env.HAS_RESUME ? '/resume.pdf' : null,
   resumeFileName: 'Kolli_Lokesh_Reddy_Resume.pdf',
   npxCommand: 'npx lokeshreddy',
   githubUrl: 'https://github.com/Lokesh-reddy18',
@@ -25,4 +25,4 @@ export const socialLinks = [
   { name: 'Instagram', slug: 'instagram', url: 'https://instagram.com/lokesh_reddy18' },
 ];
 
-export const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
+export const sections = ['home', 'work', 'skills', 'projects', 'contact'];

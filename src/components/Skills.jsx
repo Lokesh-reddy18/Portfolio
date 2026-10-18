@@ -1,40 +1,51 @@
 import { iconUrl } from '../data/icons';
 import { skillGroups } from '../data/skills';
+import Reveal from './Reveal';
 import SectionHeading from './SectionHeading';
+
+const allSkills = skillGroups.flatMap((group) => group.skills);
+const half = Math.ceil(allSkills.length / 2);
+const rows = [allSkills.slice(0, half), allSkills.slice(half)];
 
 const iconSrc = (skill, darkMode) => skill.icon ?? iconUrl(skill.slug, darkMode);
 
+const SkillChip = ({ skill, darkMode }) => (
+  <span className="flex items-center gap-3 pl-2.5 pr-5 py-2.5 rounded-2xl bg-surface-card border border-outline-variant/70 whitespace-nowrap">
+    <img src={iconSrc(skill, darkMode)} alt="" width="32" height="32" loading="lazy" className="w-8 h-8 rounded-lg" />
+    <span className="font-medium">{skill.name}</span>
+  </span>
+);
+
 const Skills = ({ darkMode }) => (
-  <section id="skills" className="py-20 transition-colors duration-300 bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100">
-    <div className="container mx-auto px-6">
-      <SectionHeading title="Skills" subtitle="Technologies & tools I work with" />
-      <div className="space-y-10">
-        {skillGroups.map((group) => (
-          <div key={group.title}>
-            <h3 className="text-lg font-semibold mb-4 text-center text-gray-600 dark:text-gray-300">{group.title}</h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              {group.skills.map((skill) => (
-                <div
-                  key={skill.name}
-                  className="flex flex-col items-center justify-center space-y-2 px-4 py-6 rounded-2xl shadow-md text-base font-semibold transition-all transform hover:scale-110 w-32 h-32 bg-blue-100 hover:bg-blue-200/80 dark:bg-gray-800 dark:hover:bg-blue-900/60"
-                  title={skill.name}
-                >
-                  <img
-                    src={iconSrc(skill, darkMode)}
-                    alt=""
-                    width="48"
-                    height="48"
-                    loading="lazy"
-                    className="w-12 h-12 object-contain animate-bounce-slow"
-                  />
-                  <span className="text-center text-sm break-words">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+  <section id="skills" className="py-24 sm:py-32 bg-surface-low">
+    <div className="max-w-6xl mx-auto px-4 sm:px-8">
+      <SectionHeading eyebrow="Skills" title="Tools I reach for">
+        Android first, with enough backend and web to own a feature end to end.
+      </SectionHeading>
     </div>
+
+    {/* Two rows drifting in opposite directions; each list is doubled so the loop is seamless. */}
+    <Reveal className="hidden motion-safe:flex flex-col gap-4 marquee-mask overflow-hidden" aria-hidden="true">
+      {rows.map((row, r) => (
+        <div
+          key={r}
+          className={`flex w-max gap-4 hover:[animation-play-state:paused] ${r === 0 ? 'animate-marquee' : 'animate-marquee-reverse'}`}
+        >
+          {[...row, ...row].map((skill, i) => (
+            <SkillChip key={`${skill.name}-${i}`} skill={skill} darkMode={darkMode} />
+          ))}
+        </div>
+      ))}
+    </Reveal>
+
+    {/* The rows above are hidden from screen readers and from reduced-motion users; this list stands in for both. */}
+    <ul className="sr-only motion-reduce:not-sr-only motion-reduce:max-w-6xl motion-reduce:mx-auto motion-reduce:px-4 sm:motion-reduce:px-8 motion-reduce:flex motion-reduce:flex-wrap motion-reduce:gap-3">
+      {allSkills.map((skill) => (
+        <li key={skill.name}>
+          <SkillChip skill={skill} darkMode={darkMode} />
+        </li>
+      ))}
+    </ul>
   </section>
 );
 
