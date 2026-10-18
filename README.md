@@ -33,7 +33,7 @@ Feel free to explore and get inspired!
 - 🏗️ **Showcase** of my projects & skills
 - 🗺️ **Easy navigation** with smooth scroll
 - 🌗 **Dark mode** that remembers your choice
-- 📬 **Contact Form** powered by Netlify Forms
+- 📬 **Contact Form** that emails messages via [Web3Forms](https://web3forms.com)
 
 > To update content, edit the files in `src/data/` — no component changes needed.
 
@@ -51,7 +51,7 @@ Portfolio/
 │   ├── hooks/          # useDarkMode, useActiveSection
 │   ├── App.jsx
 │   └── main.jsx
-├── index.html          # Also holds the static Netlify contact form
+├── index.html          # Meta tags and no-flash theme script
 ├── tailwind.config.js
 ├── package.json
 └── README.md
