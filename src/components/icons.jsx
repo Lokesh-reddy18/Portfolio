@@ -38,6 +38,15 @@ export const PhoneIcon = ({ className = 'h-5 w-5' }) => (
   </svg>
 );
 
+export const ShareIcon = ({ className = 'h-5 w-5' }) => (
+  <svg {...outline} className={className} aria-hidden="true">
+    <circle cx="18" cy="5" r="3" strokeWidth={2} />
+    <circle cx="6" cy="12" r="3" strokeWidth={2} />
+    <circle cx="18" cy="19" r="3" strokeWidth={2} />
+    <Path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" />
+  </svg>
+);
+
 export const MenuIcon = ({ className = 'h-6 w-6' }) => (
   <svg {...outline} className={className}><Path d="M4 6h16M4 12h16M4 18h16" /></svg>
 );

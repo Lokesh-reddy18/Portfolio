@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { profile, sections } from '../data/profile';
+import ShareButton from './ShareButton';
 import ThemeToggle from './ThemeToggle';
 import { MenuIcon } from './icons';
 
@@ -81,10 +82,12 @@ const Header = ({ activeSection, darkMode, onToggleTheme }) => {
               </a>
             ))}
           </nav>
+          <ShareButton />
           <ThemeToggle darkMode={darkMode} onToggle={onToggleTheme} />
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
+          <ShareButton />
           <ThemeToggle darkMode={darkMode} onToggle={onToggleTheme} />
           <button
             className="grid place-items-center w-11 h-11 rounded-full text-on-surface hover:bg-surface-high transition-colors"
