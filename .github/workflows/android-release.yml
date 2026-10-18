@@ -1,7 +1,8 @@
 # Builds a signed release APK and publishes it as a GitHub Release.
 #
-# Release by pushing a tag:   git tag android-v1.2.0 && git push origin android-v1.2.0
-# or from GitHub:             Actions -> Android release -> Run workflow -> version 1.2.0
+# Manual only: Actions -> Android release -> Run workflow (branch: main) -> version 1.2.0
+# The run creates the tag android-v1.2.0 at the current main. Only the repository owner can
+# release: GitHub shows the button to users with write access, and the job also checks the actor.
 #
 # Needs these repository secrets (Settings -> Secrets and variables -> Actions):
 #   ANDROID_KEYSTORE_BASE64    the release keystore (.jks), base64-encoded
@@ -11,8 +12,6 @@
 name: Android release
 
 on:
-  push:
-    tags: ["android-v*"]
   workflow_dispatch:
     inputs:
       version:
@@ -28,6 +27,10 @@ concurrency:
 
 jobs:
   release:
+    # Even if collaborators get write access later, only the owner's runs may use the signing key.
+    # triggering_actor (not actor) is checked so a re-run by someone else is refused too.
+    # The Run workflow button can target any branch; releases only ship reviewed code from main.
+    if: github.triggering_actor == github.repository_owner && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     defaults:
@@ -40,14 +43,8 @@ jobs:
       - name: Work out the version
         id: version
         env:
-          INPUT_VERSION: ${{ inputs.version }}
-          REF_NAME: ${{ github.ref_name }}
+          VERSION: ${{ inputs.version }}
         run: |
-          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
-            VERSION="$INPUT_VERSION"
-          else
-            VERSION="${REF_NAME#android-v}"
-          fi
           if [[ ! "$VERSION" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
             echo "::error::Version '$VERSION' must look like 1.2.3"
             exit 1
