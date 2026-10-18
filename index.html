@@ -2,11 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/skull.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lokesh Reddy</title>
+    <title>Kolli Lokesh Reddy · Software Engineer</title>
+    <meta name="description" content="Kolli Lokesh Reddy, Software Engineer (Android) at AppsForBharat. Building the Sri Mandir and Sri Panchangam Android apps." />
+    <meta property="og:title" content="Kolli Lokesh Reddy · Software Engineer" />
+    <meta property="og:description" content="Software Engineer (Android) at AppsForBharat. Building the Sri Mandir and Sri Panchangam Android apps." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lokesh-reddy18.netlify.app/" />
+    <meta property="og:image" content="https://lokesh-reddy18.netlify.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://lokesh-reddy18.netlify.app/" />
+    <meta name="theme-color" content="#302f82" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- Applies the saved/OS theme before React mounts so the page never flashes light. -->
+    <script>
+      try {
+        var saved = localStorage.getItem('darkMode');
+        var dark = saved !== null ? saved === 'true' : matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
   </head>
   <body>
+    <!-- Static copy of the React contact form: Netlify only detects forms present in the built HTML. -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -21,7 +21,7 @@
 
 > **A modern, blazing-fast, and fully responsive portfolio built with [React](https://react.dev/) & [Tailwind CSS](https://tailwindcss.com/) using [Vite](https://vitejs.dev/).**
 
-✨ This portfolio website showcases my projects, skills, education, and offers a seamless way to connect with me.<br>
+✨ This portfolio website showcases my work as a Software Engineer (Android) at AppsForBharat, along with my projects, skills, education, and offers a seamless way to connect with me.<br>
 Feel free to explore and get inspired!
 
 
@@ -32,7 +32,10 @@ Feel free to explore and get inspired!
 - 📱 **Fully Responsive** (mobile, tablet & desktop)
 - 🏗️ **Showcase** of my projects & skills
 - 🗺️ **Easy navigation** with smooth scroll
-- 📬 **Contact Form** to reach out directly
+- 🌗 **Dark mode** that remembers your choice
+- 📬 **Contact Form** powered by Netlify Forms
+
+> To update content, edit the files in `src/data/` — no component changes needed.
 
 
 ## 📁 Project Structure
@@ -40,18 +43,19 @@ Feel free to explore and get inspired!
 ```bash
 Portfolio/
 ├── public/
+│   ├── icons/          # Local icons not available on skillicons.dev
+│   └── projects/       # Profile photo and project screenshots
 ├── src/
-│   ├── assets/         # Images, icons, etc.
-│   ├── components/     # Reusable React components
-│   ├── data/           # Data files (projects, skills, etc.)
-│   ├── pages/          # Main page components
+│   ├── components/     # One component per section (Header, Hero, Experience, ...)
+│   ├── data/           # Profile, experience, projects and skills content
+│   ├── hooks/          # useDarkMode, useActiveSection
 │   ├── App.jsx
 │   └── main.jsx
+├── index.html          # Also holds the static Netlify contact form
 ├── tailwind.config.js
 ├── package.json
 └── README.md
 ```
-
 
 ## 🛠️ Getting Started
 
@@ -91,7 +95,7 @@ Ready to run this portfolio locally? Just follow these steps:
   <a href="https://www.linkedin.com/in/kolli-lokesh-reddy/" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-2e3083?style=flat-square&logo=linkedin&logoColor=white"/>
   </a>
-  <a href="mailto:lokeshreddy.kolli18@gmail.com">
+  <a href="mailto:kollilokeshreddy18@gmail.com">
     <img src="https://img.shields.io/badge/Email-2e3083?style=flat-square&logo=gmail&logoColor=white"/>
   </a>
   <a href="https://github.com/Lokesh-reddy18" target="_blank">
