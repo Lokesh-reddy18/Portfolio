@@ -1,6 +1,6 @@
 import { experience } from '../data/experience';
 import SectionHeading from './SectionHeading';
-import { PlayIcon } from './icons';
+import { ExternalLinkIcon, PlayIcon } from './icons';
 
 const Experience = () => (
   <section id="experience" className="py-20 bg-gray-50 dark:bg-gray-800">
@@ -35,22 +35,40 @@ const Experience = () => (
                   ))}
                 </div>
                 {job.apps && (
-                  <div className="flex flex-wrap gap-3 mt-5">
-                    {job.apps.map((app) => (
-                      <a
-                        key={app.name}
-                        href={app.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white"
-                      >
-                        <PlayIcon />
-                        <span>
-                          <span className="block text-[10px] font-normal leading-none opacity-80">Get it on Google Play</span>
-                          {app.name}
-                        </span>
-                      </a>
-                    ))}
+                  <div className="mt-5 pt-5 border-t border-gray-100 dark:border-gray-800">
+                    <p className="text-xs font-semibold uppercase tracking-wider mb-3 text-gray-500 dark:text-gray-400">
+                      Apps I work on
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {job.apps.map((app) => (
+                        <a
+                          key={app.name}
+                          href={app.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${app.name} on Google Play`}
+                          className="group/app min-w-0 flex items-center gap-3 p-3 rounded-xl border transition-all duration-200 border-gray-200 bg-gray-50 hover:border-blue-300 hover:bg-blue-50 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-blue-700 dark:hover:bg-gray-800/60"
+                        >
+                          <img
+                            src={app.icon}
+                            alt=""
+                            width="48"
+                            height="48"
+                            loading="lazy"
+                            className="w-12 h-12 rounded-xl shadow-sm flex-shrink-0"
+                          />
+                          <div className="min-w-0 flex-1">
+                            <p className="font-semibold leading-tight">{app.name}</p>
+                            <p className="text-xs sm:truncate text-gray-500 dark:text-gray-400">{app.blurb}</p>
+                            <p className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-blue-600 dark:text-blue-400">
+                              <PlayIcon className="h-3 w-3" />
+                              Google Play
+                              <ExternalLinkIcon className="h-3 w-3 transition-transform group-hover/app:translate-x-0.5 group-hover/app:-translate-y-0.5" />
+                            </p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

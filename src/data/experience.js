@@ -9,8 +9,18 @@ export const experience = [
     ],
     tech: ['Kotlin', 'Jetpack Compose', 'Firebase', 'TypeScript'],
     apps: [
-      { name: 'Sri Mandir', url: 'https://play.google.com/store/apps/details?id=com.mandir' },
-      { name: 'Sri Panchangam', url: 'https://play.google.com/store/apps/details?id=com.sri.panchangam' },
+      {
+        name: 'Sri Mandir',
+        blurb: 'Online puja, temple darshan & devotion',
+        icon: '/icons/apps/sri-mandir.png',
+        url: 'https://play.google.com/store/apps/details?id=com.mandir',
+      },
+      {
+        name: 'Sri Panchangam',
+        blurb: 'Hindu calendar, panchang & muhurat',
+        icon: '/icons/apps/sri-panchangam.png',
+        url: 'https://play.google.com/store/apps/details?id=com.sri.panchangam',
+      },
     ],
   },
   {
