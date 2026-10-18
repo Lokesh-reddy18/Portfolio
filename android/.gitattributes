@@ -1,0 +1,4 @@
+# gradlew must stay LF (runs on Linux CI); gradlew.bat must stay CRLF (Windows cmd.exe).
+gradlew text eol=lf
+*.bat text eol=crlf
+*.jar binary
