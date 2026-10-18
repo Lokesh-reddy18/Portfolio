@@ -39,18 +39,25 @@ const Contact = () => {
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // Netlify Forms: the POST must be url-encoded and include `form-name` matching the
-  // hidden static form in index.html, which is what Netlify detects at build time.
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Honeypot: real users never see or fill this field, so a value means a bot.
+    if (e.target.botcheck.checked) return;
     setStatus('sending');
     try {
-      const res = await fetch('/', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ 'form-name': 'contact', ...formData }).toString(),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: profile.web3formsKey,
+          from_name: 'Portfolio contact form',
+          ...formData,
+          subject: `[Portfolio] ${formData.subject}`,
+          replyto: formData.email,
+        }),
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || `HTTP ${res.status}`);
       setStatus('success');
       setFormData(emptyForm);
       setTimeout(() => setStatus('idle'), 4000);
@@ -99,6 +106,7 @@ const Contact = () => {
 
             <div className="rounded-2xl p-6 shadow-lg bg-white dark:bg-gray-900">
               <form name="contact" onSubmit={handleSubmit} className="space-y-4">
+                <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
                 <div className="grid sm:grid-cols-2 gap-4">
                   <Field id="name" label="Name" type="text" placeholder="Your Name" value={formData.name} onChange={handleChange} />
                   <Field id="email" label="Email" type="email" placeholder="your@email.com" value={formData.email} onChange={handleChange} />

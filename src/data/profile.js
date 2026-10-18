@@ -14,6 +14,8 @@ export const profile = {
   resumeFileName: 'Kolli_Lokesh_Reddy_Resume.pdf',
   npxCommand: 'npx lokeshreddy',
   githubUrl: 'https://github.com/Lokesh-reddy18',
+  // Web3Forms access keys are meant to be public: they only allow sending to the owner's inbox.
+  web3formsKey: 'YOUR_WEB3FORMS_ACCESS_KEY',
 };
 
 export const socialLinks = [
