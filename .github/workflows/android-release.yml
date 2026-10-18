@@ -1,0 +1,140 @@
+# Builds a signed release APK and publishes it as a GitHub Release.
+#
+# Release by pushing a tag:   git tag android-v1.2.0 && git push origin android-v1.2.0
+# or from GitHub:             Actions -> Android release -> Run workflow -> version 1.2.0
+#
+# Needs these repository secrets (Settings -> Secrets and variables -> Actions):
+#   ANDROID_KEYSTORE_BASE64    the release keystore (.jks), base64-encoded
+#   ANDROID_KEYSTORE_PASSWORD  keystore password
+#   ANDROID_KEY_ALIAS          key alias inside the keystore
+#   ANDROID_KEY_PASSWORD       key password
+name: Android release
+
+on:
+  push:
+    tags: ["android-v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to release, e.g. 1.2.0 (creates the tag android-v1.2.0)"
+        required: true
+
+permissions:
+  contents: write # to create the release and upload the APK
+
+concurrency:
+  group: android-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: android
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Work out the version
+        id: version
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            VERSION="$INPUT_VERSION"
+          else
+            VERSION="${REF_NAME#android-v}"
+          fi
+          if [[ ! "$VERSION" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+            echo "::error::Version '$VERSION' must look like 1.2.3"
+            exit 1
+          fi
+          # versionCode must only ever go up; 1.2.3 -> 10203 keeps it in step with the version name.
+          CODE=$(( BASH_REMATCH[1] * 10000 + BASH_REMATCH[2] * 100 + BASH_REMATCH[3] ))
+          {
+            echo "name=$VERSION"
+            echo "code=$CODE"
+            echo "tag=android-v$VERSION"
+          } >> "$GITHUB_OUTPUT"
+          echo "Releasing $VERSION (versionCode $CODE)"
+
+      - name: Fail early if the tag already has a release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "::error::A release for $TAG already exists"
+            exit 1
+          fi
+
+      # The project pins its Gradle daemon to JDK 21 (gradle/gradle-daemon-jvm.properties).
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Caches Gradle downloads between runs and validates the committed gradle-wrapper.jar.
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Restore the signing key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "::error::Secret ANDROID_KEYSTORE_BASE64 is not set"
+            exit 1
+          fi
+          # RUNNER_TEMP is wiped after the job, so the key never outlives the build.
+          echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
+          echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+
+      - name: Build the signed release APK
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: >
+          ./gradlew assembleRelease
+          -PversionName=${{ steps.version.outputs.name }}
+          -PversionCode=${{ steps.version.outputs.code }}
+
+      - name: Check the signature and package the APK
+        id: apk
+        env:
+          VERSION: ${{ steps.version.outputs.name }}
+        run: |
+          APK=app/build/outputs/apk/release/app-release.apk
+          if [ ! -f "$APK" ]; then
+            echo "::error::No signed APK found (got: $(ls app/build/outputs/apk/release/))"
+            exit 1
+          fi
+          BUILD_TOOLS="$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -1)"
+          "$BUILD_TOOLS/apksigner" verify --print-certs "$APK"
+          OUT="$RUNNER_TEMP/lokesh-reddy-portfolio-v$VERSION.apk"
+          cp "$APK" "$OUT"
+          (cd "$RUNNER_TEMP" && sha256sum "$(basename "$OUT")" > "$(basename "$OUT").sha256")
+          echo "path=$OUT" >> "$GITHUB_OUTPUT"
+
+      - name: Publish the GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          VERSION: ${{ steps.version.outputs.name }}
+          APK: ${{ steps.apk.outputs.path }}
+        run: |
+          cat > "$RUNNER_TEMP/notes.md" <<EOF
+          Android app for the portfolio, wrapping https://lokesh-reddy18.netlify.app in a native WebView.
+
+          **Install:** download \`$(basename "$APK")\` on an Android 8.0+ phone and open it. Android will ask
+          you to allow installs from your browser or file manager the first time.
+          EOF
+          # --target makes `gh` create the tag at this commit when the run was started from the button.
+          gh release create "$TAG" "$APK" "$APK.sha256" \
+            --title "Android v$VERSION" \
+            --notes-file "$RUNNER_TEMP/notes.md" \
+            --generate-notes \
+            --target "$GITHUB_SHA"

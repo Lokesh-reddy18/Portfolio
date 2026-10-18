@@ -50,6 +50,8 @@ Feel free to explore and get inspired!
 
 ```bash
 Portfolio/
+├── .github/workflows/  # android-release.yml: builds and publishes the signed APK
+├── android/            # Kotlin + Jetpack Compose app that wraps the site in a WebView
 ├── docs/               # README screenshots
 ├── public/
 │   ├── icons/          # Self-hosted skill, social and app icons
@@ -89,6 +91,26 @@ Ready to run this portfolio locally? Just follow these steps:
     ```
 
 4. **Open your browser** and visit [`localhost:5173`](http://localhost:5173) (or the output URL).
+
+
+## 📱 Android App
+
+The `android/` folder is a Kotlin + Jetpack Compose app that shows this site in a WebView, with native extras: offline screen, pull-to-refresh, links handed to the right apps, and a JS bridge for the native clipboard, share sheet and status bar theming.
+
+**Download:** grab the latest APK from [Releases](https://github.com/Lokesh-reddy18/Portfolio/releases) (Android 8.0+).
+
+**Build locally** (Android SDK required; open `android/` in Android Studio, or):
+```bash
+cd android
+./gradlew installDebug                                         # loads the live site
+./gradlew installDebug -PportfolioUrl=http://localhost:5174/   # loads a local dev server (run `adb reverse tcp:5174 tcp:5174`)
+```
+
+**Publish a release:** push a version tag and GitHub Actions builds, signs and publishes the APK.
+```bash
+git tag android-v1.0.0 && git push origin android-v1.0.0
+```
+The signing key lives only in the repo's Actions secrets (`ANDROID_KEYSTORE_*`, `ANDROID_KEY_*`), never in git.
 
 
 ## 🌐 Live Demo
