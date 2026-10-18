@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=700&size=32&pause=800&color=2E3083&background=FFFFFF00&center=true&vCenter=true&width=700&lines=Hey+there+%F0%9F%91%8B;I'm+Kolli+Lokesh+Reddy;Welcome+to+my+Portfolio+Site+%F0%9F%92%BB" alt="Typing SVG"/>
+  <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=700&size=32&pause=800&color=8B5000&background=FFFFFF00&center=true&vCenter=true&width=700&lines=Hey+there+%F0%9F%91%8B;I'm+Kolli+Lokesh+Reddy;Welcome+to+my+Portfolio+Site+%F0%9F%92%BB" alt="Typing SVG"/>
 </h1>
 
 <p align="center">
@@ -14,7 +14,16 @@
 </p>
 <!-- Animated Divider with theme color shimmer effect -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=2e3083&height=10&section=header&animation=twinkling"/>
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=8B5000&height=10&section=header&animation=twinkling"/>
+</p>
+
+<p align="center">
+  <a href="https://lokesh-reddy18.netlify.app/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="docs/screenshot-dark.jpg">
+      <img src="docs/screenshot-light.jpg" alt="Portfolio hero: Kolli Lokesh Reddy, Software Engineer (Android) at AppsForBharat" width="900">
+    </picture>
+  </a>
 </p>
 
 ## 🚀 About This Project
@@ -27,13 +36,12 @@ Feel free to explore and get inspired!
 
 ## ✨ Features
 
-- ⚡ **Lightning-fast** and optimized with Vite
-- 🎨 **Modern & Clean UI** with smooth, animated transitions
-- 📱 **Fully Responsive** (mobile, tablet & desktop)
-- 🏗️ **Showcase** of my projects & skills
-- 🗺️ **Easy navigation** with smooth scroll
-- 🌗 **Dark mode** that remembers your choice
-- 📬 **Contact Form** that emails messages via [Web3Forms](https://web3forms.com)
+- 🤖 **Android-native design** in a Material 3 style, with a saffron tonal palette in light and dark mode
+- 🎞️ **Thoughtful motion**: word-by-word hero, phone mockup that cycles screens and tilts toward the cursor, sliding nav, scroll reveals, press ripples and a circular theme switch. All of it switches off for `prefers-reduced-motion`
+- 📱 **Fully responsive**, keyboard-accessible, and scores 100 across Lighthouse on mobile and desktop
+- 🛍️ **Play Store cards** for the Sri Mandir and Sri Panchangam apps I work on
+- 📬 **Contact form** that emails messages via [Web3Forms](https://web3forms.com), plus one-tap copy of my email
+- 📄 **Resume button** that appears automatically once `public/resume.pdf` is added
 
 > To update content, edit the files in `src/data/` — no component changes needed.
 
@@ -42,19 +50,22 @@ Feel free to explore and get inspired!
 
 ```bash
 Portfolio/
+├── docs/               # README screenshots
 ├── public/
-│   ├── icons/          # Local icons not available on skillicons.dev
-│   └── projects/       # Profile photo and project screenshots
+│   ├── icons/          # Self-hosted skill, social and app icons
+│   ├── projects/       # Profile photo and project screenshots
+│   └── 404.html        # Branded not-found page (standalone, no React)
 ├── src/
-│   ├── components/     # One component per section (Header, Hero, Experience, ...)
+│   ├── components/     # One component per section, plus Reveal and Ripple helpers
 │   ├── data/           # Profile, experience, projects and skills content
-│   ├── hooks/          # useDarkMode, useActiveSection
+│   ├── hooks/          # useDarkMode, useActiveSection, useInView, useCountUp
+│   ├── index.css       # Material 3 colour tokens and animation styles
 │   ├── App.jsx
 │   └── main.jsx
-├── index.html          # Meta tags and no-flash theme script
-├── tailwind.config.js
-├── package.json
-└── README.md
+├── index.html          # Meta tags, JSON-LD and the no-flash theme script
+├── netlify.toml        # Security headers and asset caching
+├── tailwind.config.js  # Maps Tailwind colours to the Material tokens
+└── vite.config.js      # Detects whether a resume PDF is present
 ```
 
 ## 🛠️ Getting Started
@@ -84,7 +95,7 @@ Ready to run this portfolio locally? Just follow these steps:
 
 <p align="center">
   <a href="https://lokesh-reddy18.netlify.app/" target="_blank">
-    <img src="https://img.shields.io/badge/Visit%20Live%20Portfolio-2e3083?style=flat-square&logo=about-dot-me&logoColor=white" alt="Live Portfolio"/>
+    <img src="https://img.shields.io/badge/Visit%20Live%20Portfolio-8B5000?style=flat-square&logo=about-dot-me&logoColor=white" alt="Live Portfolio"/>
   </a>
 </p>
 
@@ -93,19 +104,19 @@ Ready to run this portfolio locally? Just follow these steps:
 
 <p align="center">
   <a href="https://www.linkedin.com/in/kolli-lokesh-reddy/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-2e3083?style=flat-square&logo=linkedin&logoColor=white"/>
+    <img src="https://img.shields.io/badge/LinkedIn-8B5000?style=flat-square&logo=linkedin&logoColor=white"/>
   </a>
   <a href="mailto:kollilokeshreddy18@gmail.com">
-    <img src="https://img.shields.io/badge/Email-2e3083?style=flat-square&logo=gmail&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Email-8B5000?style=flat-square&logo=gmail&logoColor=white"/>
   </a>
   <a href="https://github.com/Lokesh-reddy18" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-2e3083?style=flat-square&logo=github&logoColor=white"/>
+    <img src="https://img.shields.io/badge/GitHub-8B5000?style=flat-square&logo=github&logoColor=white"/>
   </a>
 </p>
 
 <!-- Animated Footer with theme color wave and shimmer -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=2e3083&height=120&section=footer&animation=twinkling"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=8B5000&height=120&section=footer&animation=twinkling"/>
   <br/>
   <b>Made with ❤️ by <a href="https://github.com/Lokesh-reddy18">Kolli Lokesh Reddy</a></b>
 </p>

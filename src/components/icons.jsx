@@ -73,10 +73,6 @@ export const ArrowUpIcon = ({ className = 'h-6 w-6' }) => (
   <svg {...outline} className={className}><Path d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
 );
 
-export const BriefcaseIcon = ({ className = 'h-5 w-5' }) => (
-  <svg {...outline} className={className}><Path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-);
-
 export const CapIcon = ({ className = 'h-5 w-5' }) => (
   <svg {...outline} className={className}>
     <Path d="M12 14l9-5-9-5-9 5 9 5z" />
