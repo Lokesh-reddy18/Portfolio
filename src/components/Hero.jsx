@@ -15,7 +15,6 @@ const Hero = () => (
             alt={profile.name}
             width="72"
             height="72"
-            fetchpriority="high"
             className="w-[72px] h-[72px] rounded-[1.6rem] object-cover ring-4 ring-primary-container shadow-md"
           />
           <div className="flex flex-col gap-1.5">
