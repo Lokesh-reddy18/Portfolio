@@ -17,7 +17,30 @@
     <meta name="theme-color" content="#FFF8F3" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <!-- Fonts load without blocking first paint; text shows in the fallback font and swaps when ready. -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
+    <!-- The hero photo is the largest element on first load; fetch it before React renders. -->
+    <link rel="preload" as="image" href="/projects/me.webp" fetchpriority="high" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Kolli Lokesh Reddy",
+        "url": "https://lokesh-reddy18.netlify.app/",
+        "image": "https://lokesh-reddy18.netlify.app/og-image.jpg",
+        "jobTitle": "Software Engineer (Android)",
+        "worksFor": { "@type": "Organization", "name": "AppsForBharat", "url": "https://appsforbharat.com" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "National Institute of Technology, Silchar" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
+        "knowsAbout": ["Android", "Kotlin", "Jetpack Compose", "Firebase", "TypeScript", "Backend for Frontend"],
+        "sameAs": [
+          "https://github.com/Lokesh-reddy18",
+          "https://www.linkedin.com/in/kolli-lokesh-reddy/",
+          "https://instagram.com/lokesh_reddy18"
+        ]
+      }
+    </script>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <!-- Applies the saved/OS theme before React mounts so the page never flashes light. -->
