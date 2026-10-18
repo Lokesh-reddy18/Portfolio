@@ -12,13 +12,13 @@ export const experience = [
       {
         name: 'Sri Mandir',
         blurb: 'Online puja, temple darshan & devotion',
-        icon: '/icons/apps/sri-mandir.png',
+        icon: '/icons/apps/sri-mandir.webp',
         url: 'https://play.google.com/store/apps/details?id=com.mandir',
       },
       {
         name: 'Sri Panchangam',
         blurb: 'Hindu calendar, panchang & muhurat',
-        icon: '/icons/apps/sri-panchangam.png',
+        icon: '/icons/apps/sri-panchangam.webp',
         url: 'https://play.google.com/store/apps/details?id=com.sri.panchangam',
       },
     ],

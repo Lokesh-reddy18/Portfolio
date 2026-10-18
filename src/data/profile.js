@@ -9,7 +9,7 @@ export const profile = {
   footerTagline: 'Software Engineer · Android',
   email: 'kollilokeshreddy18@gmail.com',
   location: 'Bengaluru, India',
-  photo: '/projects/me.jpg',
+  photo: '/projects/me.webp',
   resumeUrl: import.meta.env.HAS_RESUME ? '/resume.pdf' : null,
   resumeFileName: 'Kolli_Lokesh_Reddy_Resume.pdf',
   npxCommand: 'npx lokeshreddy',
