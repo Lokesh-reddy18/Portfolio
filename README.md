@@ -106,11 +106,11 @@ cd android
 ./gradlew installDebug -PportfolioUrl=http://localhost:5174/   # loads a local dev server (run `adb reverse tcp:5174 tcp:5174`)
 ```
 
-**Publish a release:** push a version tag and GitHub Actions builds, signs and publishes the APK.
+**Publish a release (owner only):** GitHub → **Actions → Android release → Run workflow**, keep the branch on `main`, and enter a version such as `1.0.0`. The workflow builds, signs and publishes the APK, and tags the commit `android-v1.0.0`. From a terminal:
 ```bash
-git tag android-v1.0.0 && git push origin android-v1.0.0
+gh workflow run android-release.yml --ref main -f version=1.0.0
 ```
-The signing key lives only in the repo's Actions secrets (`ANDROID_KEYSTORE_*`, `ANDROID_KEY_*`), never in git.
+Runs started by anyone else, or from any branch other than `main`, are skipped. The signing key lives only in the repo's Actions secrets (`ANDROID_KEYSTORE_*`, `ANDROID_KEY_*`), never in git.
 
 
 ## 🌐 Live Demo
