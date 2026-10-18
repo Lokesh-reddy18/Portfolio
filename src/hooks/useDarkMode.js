@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { flushSync } from 'react-dom';
+import { postToAndroid } from '../lib/nativeBridge';
 
 const STORAGE_KEY = 'darkMode';
 
@@ -18,6 +19,8 @@ export function useDarkMode() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
+    // Inside the Android app, the native status bar and theme follow the site's choice.
+    postToAndroid('theme', { dark: darkMode });
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', darkMode ? '#19120C' : '#FFF8F3');
   }, [darkMode]);
 

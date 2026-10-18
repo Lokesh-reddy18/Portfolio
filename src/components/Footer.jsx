@@ -1,20 +1,13 @@
-import { useState } from 'react';
 import { iconUrl } from '../data/icons';
 import { profile, sections, socialLinks } from '../data/profile';
+import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
 import { CheckCircleIcon, CopyIcon } from './icons';
 
 const Footer = ({ darkMode }) => {
-  const [copied, setCopied] = useState(false);
-
-  const copyToClipboard = async () => {
-    try {
-      await navigator.clipboard.writeText(profile.npxCommand);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy text: ', err);
-    }
-  };
+  const [copied, copyToClipboard] = useCopyToClipboard(profile.npxCommand, {
+    label: 'Command',
+    onError: (err) => console.error('Failed to copy text: ', err),
+  });
 
   return (
     <footer className="pt-20 pb-10">

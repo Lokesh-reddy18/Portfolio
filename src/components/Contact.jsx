@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { profile } from '../data/profile';
+import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
 import Reveal from './Reveal';
 import Ripple from './Ripple';
 import SectionHeading from './SectionHeading';
@@ -37,17 +38,12 @@ const Field = ({ id, label, multiline, ...props }) => {
 const Contact = () => {
   const [formData, setFormData] = useState(emptyForm);
   const [status, setStatus] = useState('idle');
-  const [emailCopied, setEmailCopied] = useState(false);
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(profile.email);
-      setEmailCopied(true);
-      setTimeout(() => setEmailCopied(false), 2000);
-    } catch {
+  const [emailCopied, copyEmail] = useCopyToClipboard(profile.email, {
+    label: 'Email',
+    onError: () => {
       window.location.href = `mailto:${profile.email}`;
-    }
-  };
+    },
+  });
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
