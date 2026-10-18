@@ -15,7 +15,7 @@ export const profile = {
   npxCommand: 'npx lokeshreddy',
   githubUrl: 'https://github.com/Lokesh-reddy18',
   // Web3Forms access keys are meant to be public: they only allow sending to the owner's inbox.
-  web3formsKey: 'YOUR_WEB3FORMS_ACCESS_KEY',
+  web3formsKey: 'a0af9543-63ba-4300-a4ff-41a40d4379ec',
 };
 
 export const socialLinks = [
